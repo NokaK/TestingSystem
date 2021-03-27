@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Testing System</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <form class="form" action="" method="post">
+<label for="name">Name</label>
+<input type="text" id="name" name="name" placeholder="John" >
+<label for="email">Email</label>
+<input type="email" id="email" name="email" placeholder="John@doe.com" >
+<label for="password">Password</label>
+<input type="password" id="password" onkeyup='check();' name="password">
+<label for="repeat_password">Repeat your Password</label>
+<span id="repeat_label" ></span>
+<input type="password" id="repeat_password" onkeyup='checkRepeat();' name="repeat_password" placeholder="Repeat">
+
+<input type="submit" name="submit" id="submit" value="Submit">
+
+    </form>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
