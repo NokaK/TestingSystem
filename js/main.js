@@ -3,12 +3,14 @@ function checkRepeat() {
     document.getElementById("password").value !==
     document.getElementById("repeat_password").value
   ) {
+
     document.querySelector(".warning_password").innerHTML =
       "პაროლები არ ემთხვევა!";
     document.querySelector(".reset_btn").disabled = true;
   } else {
     document.querySelector(".warning_password").innerHTML = null;
     document.querySelector(".regist_btn").disabled = false;
+
   }
 }
 
@@ -40,25 +42,24 @@ const email = document.getElementById("login_email");
 const loginPassword = document.getElementById("login_password");
 const loginForm = document.getElementById("login_form");
 
+
 loginForm.addEventListener("submit", (e) => {
+
   e.preventDefault();
 
-  if (
-    email.value === "" ||
-    email.value === null ||
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-      email.value
-    )
-  ) {
-    email.classList.add("error_syle");
-    document.querySelector(".warning_email").innerHTML =
-      "მეილის ფორმატი არასწორია";
+  
+  const rgx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const r =  rgx.test(email.value);
+  console.log(r);
+  console.log(email.value);
 
-    // document.querySelector(".input_error").innerHTML =
-    //   " გთხოვთ შეიყვანოთ მეილის მისამართი";
-  } else if (loginPassword.value === "" || loginPassword.value === null) {
-    loginPassword.classList.add("error_syle");
-    loginPassword.placeholder = " შეავსეთ ყველა ველი";
+
+  if (loginPassword.value === "" || loginPassword.value === null || email.value === "" || email.value === null ) {
+    document.querySelector(".warning_email").classList.add("error_style");
+    document.querySelector(".warning_email").innerHTML = "შეავსეთ ყველა ველი";
+ else   if ( r === false  ) 
+ {  document.querySelector(".warning_email").classList.add("error_style");
+    document.querySelector(".warning_email").innerHTML = "მეილის ფორმატი არასწორია";
   } else {
     location.href = "profile.html";
   }
@@ -97,6 +98,19 @@ regForm.addEventListener("submit", (e) => {
       "სახელი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
   } else {
     document.querySelector(".warning_name").innerHTML = "";
+
+  }
+  
+  else   if ( r === false  ) {
+
+    
+    document.querySelector(".warning_email").classList.add("error_style");
+    document.querySelector(".warning_email").innerHTML = "მეილის ფორმატი არასწორია";
+
+  } 
+  
+  else {
+    location.href = "profile.html";
   }
 
   if (regSurname.value === "" || regSurname.value === null) {
@@ -105,7 +119,10 @@ regForm.addEventListener("submit", (e) => {
     warnSurname.innerHTML = "გთხოვთ შეიყვანოთ გვარი";
   } else {
     document.querySelector(".warning_surname").innerHTML = "";
+
   }
+}
+
 
   if (/\p{Letter}/u.test(regSurname.value) === false) {
     document.querySelector(".warning_surname").innerHTML =
@@ -116,3 +133,4 @@ regForm.addEventListener("submit", (e) => {
       "გთხოვთ შეიყვანოთ პაროლი";
   }
 });
+
