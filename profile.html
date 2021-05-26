@@ -50,6 +50,7 @@
             type="text"
             value="ნინო"
           />
+          <span class="warning_name warning"></span>
           <input
             class="profile_lastname_input basic_input"
             name="profile_lastname_input"
@@ -57,18 +58,24 @@
             type="text"
             value="ნინიძე"
           />
+          <span class="warning_surname warning"></span>
           <input
             class="profile_password_input basic_input"
+            id="profile_password_input"
             name="profile_password_input"
             placeholder="შეიყვანეთ პაროლი"
             type="password"
           />
+
           <input
             class="repeat_password_input basic_input"
+            id="repeat_password_input"
             name="repeat_password_input"
             placeholder="გაიმეორეთ პაროლი"
             type="password"
+            onkeyup="checkRepeat()"
           />
+          <span class="warning warning_password"></span>
           <button class="basic_button reset_btn" id="test" type="submit">
             განახლება
           </button>

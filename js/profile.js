@@ -47,3 +47,48 @@ teachers.addEventListener("click", () => {
   teachersSection.classList.remove("hidden");
   teachers.classList.add("active");
 });
+
+function checkRepeat() {
+  if (
+    document.getElementById("profile_password_input").value !==
+    document.getElementById("repeat_password_input").value
+  ) {
+    document.querySelector(".warning_password").innerHTML =
+      "პაროლები არ ემთხვევა!";
+    document.querySelector(".reset_btn").disabled = true;
+  } else {
+    document.querySelector(".warning_password").innerHTML = null;
+    document.querySelector(".reset_btn").disabled = false;
+  }
+}
+
+const resetForm = document.querySelector(".profile_section_form");
+resetForm.addEventListener("submit", (e) => {
+  console.log("test");
+  e.preventDefault();
+  const name = document.querySelector(".profile_firstname_input");
+  const LastName = document.querySelector(".profile_lastname_input");
+  const passwordInput = document.querySelector("#profile_password_input").value;
+  const ResPasswordInput = document.querySelector(
+    "#repeat_password_input"
+  ).value;
+  if (!passwordInput || !ResPasswordInput) {
+    document.querySelector(".warning_password").innerHTML =
+      "გთხოვთ შეიყვანოთ პაროლი";
+  } else {
+    document.querySelector(".warning_password").innerHTML = null;
+  }
+
+  if (/\p{Letter}/u.test(name.value) === false) {
+    document.querySelector(".warning_name").innerHTML =
+      "სახელი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
+  } else {
+    document.querySelector(".warning_name").innerHTML = "";
+  }
+  if (/\p{Letter}/u.test(LastName.value) === false) {
+    document.querySelector(".warning_name").innerHTML =
+      "გვარი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
+  } else {
+    document.querySelector(".warning_name").innerHTML = "";
+  }
+});

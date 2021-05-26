@@ -1,3 +1,17 @@
+function checkRepeat() {
+  if (
+    document.getElementById("password").value !==
+    document.getElementById("repeat_password").value
+  ) {
+    document.querySelector(".warning_password").innerHTML =
+      "პაროლები არ ემთხვევა!";
+    document.querySelector(".reset_btn").disabled = true;
+  } else {
+    document.querySelector(".warning_password").innerHTML = null;
+    document.querySelector(".regist_btn").disabled = false;
+  }
+}
+
 function slideRegistration() {
   let registration = document.querySelector(".regist");
   registration.classList.toggle("hidden");
@@ -78,8 +92,9 @@ regForm.addEventListener("submit", (e) => {
     warnName.innerHTML = "გთხოვთ შეიყვანოთ სახელი";
   }
 
-  if (/^[a-zA-Z ]+$/.test(regName.value) === false) {
-    document.querySelector(".warning_name").innerHTML = "სახელი არასწორია";
+  if (/\p{Letter}/u.test(regName.value) === false) {
+    document.querySelector(".warning_name").innerHTML =
+      "სახელი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
   } else {
     document.querySelector(".warning_name").innerHTML = "";
   }
@@ -89,11 +104,12 @@ regForm.addEventListener("submit", (e) => {
     warnSurname.classList.add("warning");
     warnSurname.innerHTML = "გთხოვთ შეიყვანოთ გვარი";
   } else {
-    warnSurname.innerHTML = "";
+    document.querySelector(".warning_surname").innerHTML = "";
   }
 
-  if (/^[a-zA-Z]+$/.test(regSurname.value) === false) {
-    document.querySelector(".warning_surname").innerHTML = "გვარი არასწორია";
+  if (/\p{Letter}/u.test(regSurname.value) === false) {
+    document.querySelector(".warning_surname").innerHTML =
+      "გვარი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
   }
   if (regPassword.value === "" || regPassword.value === null) {
     document.querySelector(".warning_password").innerHTML =
