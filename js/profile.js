@@ -66,6 +66,8 @@ const resetForm = document.querySelector(".profile_section_form");
 resetForm.addEventListener("submit", (e) => {
   console.log("test");
   e.preventDefault();
+  const warnName = document.querySelector(".profile_name");
+  const warnLastName = document.querySelector(".profile_lastName");
   const name = document.querySelector(".profile_firstname_input");
   const LastName = document.querySelector(".profile_lastname_input");
   const passwordInput = document.querySelector("#profile_password_input").value;
@@ -78,17 +80,29 @@ resetForm.addEventListener("submit", (e) => {
   } else {
     document.querySelector(".warning_password").innerHTML = null;
   }
-
-  if (/\p{Letter}/u.test(name.value) === false) {
-    document.querySelector(".warning_name").innerHTML =
-      "სახელი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
-  } else {
-    document.querySelector(".warning_name").innerHTML = "";
+  if (name.value.length === 0) {
+    console.log("carielia");
+    warnName.innerHTML = "გთხოვთ შეიყვანოთ სახელი";
   }
-  if (/\p{Letter}/u.test(LastName.value) === false) {
-    document.querySelector(".warning_name").innerHTML =
-      "გვარი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
-  } else {
-    document.querySelector(".warning_name").innerHTML = "";
+  if (name.value.length > 0 && /\p{Letter}/u.test(name.value) === false) {
+    warnName.innerHTML = "სახელი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
+  } else if (name.value.length > 0 && /\p{Letter}/u.test(name.value) === true) {
+    console.log("ara");
+    warnName.innerHTML = "";
+  }
+  if (LastName.value.length === 0) {
+    console.log("carielia");
+    warnLastName.innerHTML = "გთხოვთ შეიყვანოთ გვარი";
+  }
+  if (
+    LastName.value.length > 0 &&
+    /\p{Letter}/u.test(LastName.value) === false
+  ) {
+    warnLastName.innerHTML = "გვარი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
+  } else if (
+    LastName.value.length > 0 &&
+    /\p{Letter}/u.test(LastName.value) === true
+  ) {
+    warnLastName.innerHTML = "";
   }
 });

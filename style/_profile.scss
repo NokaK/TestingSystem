@@ -2,78 +2,75 @@
 @import "./mixins";
 
 body {
-
   max-width: 1200px;
   margin: auto;
-.profile_header {
-  @include flex($justify: space-between);
-  padding: 0px 10px 0 25px;
-  &_nav {
+  .profile_header {
     @include flex($justify: space-between);
-  }
-
-  .menu_profile_item
-   {
-    position: relative;
-
-    &::before {
-      content: url("/svg/user.svg");
-      position: absolute;
-      top: 3px;
-      left: -25px;
-      width: 15px;
-    }
-  }
-
-  .menu_logOut_item {
-    position: relative;
-
-    &::before {
-      content: url("/svg/log-out.svg");
-      position: absolute;
-      top: 3px;
-      left: 75px;
-      width: 15px;
+    padding: 0px 10px 0 25px;
+    &_nav {
+      @include flex($justify: space-between);
     }
 
-  }
+    .menu_profile_item {
+      position: relative;
 
-  a {
-    text-decoration: none;
-    margin-right: 20px;
-    color: black;
-  }
-}
-.main_section_container {
-  display: flex;
-  padding-left: 10px;
-  margin-top: 50px;
-  .main_section {
-    width: 15%;
-    margin-right: calc(50vw - 15% - 160px);
+      &::before {
+        content: url("../svg/user.svg");
+        position: absolute;
+        top: 3px;
+        left: -25px;
+        width: 15px;
+      }
+    }
 
-    ul {
-      padding-left: 10px;
-      margin-top: 10px;
+    .menu_logOut_item {
+      position: relative;
+
+      &::before {
+        content: url("../svg/log-out.svg");
+        position: absolute;
+        top: 3px;
+        left: 75px;
+        width: 15px;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      margin-right: 20px;
+      color: black;
     }
   }
-  .main_section_li,
-  .my_subject_li {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+  .main_section_container {
+    display: flex;
+    padding-left: 10px;
+    margin-top: 50px;
+    .main_section {
+      width: 15%;
+      margin-right: calc(50vw - 15% - 160px);
+
+      ul {
+        padding-left: 10px;
+        margin-top: 10px;
+      }
+    }
+    .main_section_li,
+    .my_subject_li {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
   }
-}
-.profile_section_form {
-  width: 300px;
-  @include flex($direct: column);
-  input {
-    width: 80%;
+  .profile_section_form {
+    width: 300px;
+    @include flex($direct: column);
+    input {
+      width: 80%;
+    }
+    h5 {
+      margin-bottom: 10px;
+    }
+    .reset_btn {
+      width: 80%;
+    }
   }
-  h5 {
-    margin-bottom: 10px;
-  }
-  .reset_btn {
-    width: 80%;
-  }
-}
 }

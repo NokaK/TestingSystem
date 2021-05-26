@@ -45,9 +45,7 @@
             name="login_email"
             value=""
             id="login_email"
-
             placeholder="ელ-ფოსტა"
-            
           />
 
           <input
@@ -55,9 +53,7 @@
             name="login_password"
             value=""
             id="login_password"
-
             placeholder="პაროლი"
-            
           />
           <a href="resetPassword.html">დაგავიწყდა პაროლი?</a>
           <a></a>
@@ -80,16 +76,16 @@
         <h6>შექმენით საკუთარი ექაუნთი</h6>
         <form class="regist_form" id="regist_form" action="#">
           <input
-            type="email"
             name="regist_email"
             value=""
             id="regist_email"
             placeholder="ელ-ფოსტა"
-            
           />
-
-          <input type="text" name="name" id="name" placeholder="სახელი" >
-          <input type="text" name="surname" id="surname" placeholder="გვარი" >
+          <span class="reg_warning_email error_style"></span>
+          <input type="text" name="name" id="name" placeholder="სახელი" />
+          <span class="warning_name error_style"></span>
+          <input type="text" name="surname" id="surname" placeholder="გვარი" />
+          <span class="warning_surname error_style"></span>
           <input
             type="password"
             name="regist_password"
@@ -97,16 +93,16 @@
             id="password"
             placeholder="პაროლი"
           />
+          <span class="warning_password error_style"> </span>
           <input
             type="password"
             name="repeat_regist_password"
             value=""
             id="repeat_password"
-
             placeholder="გაიმეორეთ პაროლი"
             oninput="checkRepeat()"
           />
-          <span class="warning"></span>
+
           <input
             id="regist_btn"
             type="submit"
