@@ -38,6 +38,10 @@ input[type=submit i] {
   outline: none;
 }
 
+.active {
+  background-color: #221b57;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -76,6 +80,10 @@ input[type=submit i] {
   height: 35px;
   border: none;
   outline: none;
+}
+
+.active {
+  background-color: #221b57;
 }
 
 .reset_password_container {
@@ -166,6 +174,10 @@ input[type=submit i] {
   outline: none;
 }
 
+.active {
+  background-color: #221b57;
+}
+
 body {
   max-width: 1200px;
   margin: auto;
@@ -241,6 +253,24 @@ body .profile_section_form h5 {
 }
 body .profile_section_form .reset_btn {
   width: 80%;
+}
+
+.middle_section button {
+  padding: 0 15px 0 15px;
+}
+
+.students__form {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+.students__form .add_student {
+  width: 200px;
+}
+
+.students_section h4 {
+  cursor: pointer;
 }
 
 .log_reg {
