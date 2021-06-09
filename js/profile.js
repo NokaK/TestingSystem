@@ -80,6 +80,7 @@ resetForm.addEventListener("submit", (e) => {
     document.querySelector(".warning_password").innerHTML = null;
   }
   if (name.value.length === 0) {
+
     warnName.innerHTML = "გთხოვთ შეიყვანოთ სახელი";
   }
   if (name.value.length > 0 && /\p{Letter}/u.test(name.value) === false) {
@@ -186,3 +187,12 @@ AddStudentBtn.addEventListener("click", () => {
     StudentLastName.value = "";
   }
 });
+
+console.log(sessionStorage);
+
+let profileName = sessionStorage.getItem('name');
+let profileSurname = sessionStorage.getItem('surname');
+let profileEmail = sessionStorage.getItem('email');
+
+document.getElementById("profileName").innerHTML = profileName + " " + profileSurname;
+document.getElementById("profileEmail").value = profileEmail;
