@@ -273,6 +273,14 @@ body .profile_section_form .reset_btn {
   cursor: pointer;
 }
 
+.tests_section_form {
+  display: flex;
+  flex-direction: column;
+}
+.tests_section .add_test {
+  width: 200px;
+}
+
 .log_reg {
   display: flex;
   justify-content: space-between;

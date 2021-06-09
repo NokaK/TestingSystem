@@ -186,3 +186,56 @@ AddStudentBtn.addEventListener("click", () => {
     StudentLastName.value = "";
   }
 });
+
+// add tests
+const addTest = document.querySelector(".add_test");
+const testUl = document.querySelector(".tests_ul");
+const questionIput = document.querySelector(".tests_question_input");
+const answerIput = document.querySelector(".tests_answer_input");
+
+addTest.addEventListener("click", () => {
+  const answerText = answerIput.value;
+  const questionText = questionIput.value;
+  if (answerText.trim().length === 0) {
+    document.querySelector(".answer_error ").innerHTML =
+      "გთხოვთ შეიყვანოთ პასუხი";
+  } else {
+    document.querySelector(".answer_error ").innerHTML = "";
+  }
+  if (questionText.trim().length === 0) {
+    document.querySelector(".question_error ").innerHTML =
+      "გთხოვთ შეიყვანოთ კითხვა";
+  } else {
+    document.querySelector(".question_error ").innerHTML = "";
+  }
+  if (questionText.trim().length && answerText.trim().length) {
+    const li = document.createElement("li");
+    li.classList.add("tests_li");
+    const title = document.createElement("h4");
+    title.classList.add("test_title");
+    const question = document.createElement("p");
+    question.classList.add("question");
+    const answer = document.createElement("p");
+    answer.classList.add("answer");
+    const testLi = document.querySelectorAll(".tests_li");
+    const titleText = document.createTextNode(`ტესტი ${testLi.length + 1}`);
+
+    li.appendChild(title);
+
+    const answerNode = document.createTextNode(answerText);
+    const questionNode = document.createTextNode(questionText);
+
+    question.appendChild(questionNode);
+    answer.appendChild(answerNode);
+
+    li.appendChild(question);
+    li.appendChild(answer);
+
+    title.appendChild(titleText);
+    testUl.appendChild(li);
+    answerIput.value = "";
+    questionIput.value = "";
+    document.querySelector(".question_error ").innerHTML = "";
+    document.querySelector(".answer_error ").innerHTML = "";
+  }
+});
