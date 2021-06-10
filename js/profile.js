@@ -183,8 +183,7 @@ AddStudentBtn.addEventListener("click", () => {
       document.createTextNode(StudentName.value + " " + StudentLastName.value)
     );
     ActiveUl.appendChild(li);
-
-    StudentName.value = "";
+     StudentName.value = "";
     StudentLastName.value = "";
   }
 });
