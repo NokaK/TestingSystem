@@ -95,3 +95,13 @@ body {
 
   }
 }
+
+.tests_section {
+  &_form {
+    display: flex;
+    flex-direction: column;
+  }
+  .add_test {
+    width: 200px;
+  }
+}

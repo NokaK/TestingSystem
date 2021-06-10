@@ -104,50 +104,34 @@ resetForm.addEventListener("submit", (e) => {
   }
 });
 
-// TOGGLE CLASS
-const titl2Bottom = document.querySelector(".title2_bottom");
-const class2Top = document.querySelector(".class2_top ");
-const class1Top = document.querySelector(".class1_top");
-const class1Bottom = document.querySelector(".class1_bottom");
-const class2Bottom = document.querySelector(".class2_bottom");
-const class3Top = document.querySelector(".class3_top");
-const class3Bottom = document.querySelector(".class3_bottom");
-const title1Bottom = document.querySelector(".title1_bottom");
-const title3Bottom = document.querySelector(".title3_bottom");
+// toggle add students form
+const titl2 = document.querySelector(".title2");
+const titl1 = document.querySelector(".title1");
+const titl3 = document.querySelector(".title3");
+const form = document.querySelector(".students__form");
+const class1 = document.querySelector(".class1");
+const class2 = document.querySelector(".class2");
+const class3 = document.querySelector(".class3");
 
-const hide = (...x) => {
-  for (var i = 0; i < x.length; i++) {
-    x[i].classList.add("hidden");
-  }
-};
+titl2.addEventListener("click", () => {
+  const class2form = document.querySelector(".class2__form");
+  class1.classList.remove("active_class");
+  class2.classList.add("active_class");
 
-const show = (...x) => {
-  for (var i = 0; i < x.length; i++) {
-    x[i].classList.remove("hidden");
-  }
-};
-
-titl2Bottom.addEventListener("click", () => {
-  class2Top.classList.add("active_class");
-  class1Top.classList.remove("active_class");
-  class3Top.classList.remove("active_class");
-  hide(class1Top, class2Bottom, class3Top);
-  show(class1Bottom, class2Top, class3Bottom);
+  class2form.appendChild(form);
 });
-title1Bottom.addEventListener("click", () => {
-  class1Top.classList.add("active_class");
-  class3Top.classList.remove("active_class");
-  class2Top.classList.remove("active_class");
-  hide(class2Top, class1Bottom, class3Top);
-  show(class1Top, class2Bottom, class3Bottom);
+titl1.addEventListener("click", () => {
+  const class1form = document.querySelector(".class1_form");
+  class2.classList.remove("active_class");
+  class1.classList.add("active_class");
+  class1form.appendChild(form);
 });
-
-title3Bottom.addEventListener("click", () => {
-  class3Top.classList.add("active_class");
-  class2Top.classList.remove("active_class");
-  class1Top.classList.remove("active_class");
-  hide(class2Top, class1Top, class3Bottom);
-  show(class3Top, class1Bottom, class2Bottom);
+titl3.addEventListener("click", () => {
+  const class3form = document.querySelector(".class3_form");
+  class3.classList.add("active_class");
+  class2.classList.remove("active_class");
+  class1.classList.remove("active_class");
+  class3form.appendChild(form);
 });
 
 // ADD STUDENTS
@@ -194,14 +178,68 @@ AddStudentBtn.addEventListener("click", () => {
     const activeClass = document.querySelector(".active_class");
     const ActiveUl = activeClass.querySelector(".students_ul");
     const li = document.createElement("li");
+
     li.appendChild(
       document.createTextNode(StudentName.value + " " + StudentLastName.value)
     );
     ActiveUl.appendChild(li);
 
+    StudentName.value = "";
+    StudentLastName.value = "";
   }
-  StudentName.value = "";
-  StudentLastName.value = "";
+});
+
+// add tests
+const addTest = document.querySelector(".add_test");
+const testUl = document.querySelector(".tests_ul");
+const questionIput = document.querySelector(".tests_question_input");
+const answerIput = document.querySelector(".tests_answer_input");
+
+addTest.addEventListener("click", () => {
+  const answerText = answerIput.value;
+  const questionText = questionIput.value;
+  if (answerText.trim().length === 0) {
+    document.querySelector(".answer_error ").innerHTML =
+      "გთხოვთ შეიყვანოთ პასუხი";
+  } else {
+    document.querySelector(".answer_error ").innerHTML = "";
+  }
+  if (questionText.trim().length === 0) {
+    document.querySelector(".question_error ").innerHTML =
+      "გთხოვთ შეიყვანოთ კითხვა";
+  } else {
+    document.querySelector(".question_error ").innerHTML = "";
+  }
+  if (questionText.trim().length && answerText.trim().length) {
+    const li = document.createElement("li");
+    li.classList.add("tests_li");
+    const title = document.createElement("h4");
+    title.classList.add("test_title");
+    const question = document.createElement("p");
+    question.classList.add("question");
+    const answer = document.createElement("p");
+    answer.classList.add("answer");
+    const testLi = document.querySelectorAll(".tests_li");
+    const titleText = document.createTextNode(`ტესტი ${testLi.length + 1}`);
+
+    li.appendChild(title);
+
+    const answerNode = document.createTextNode(answerText);
+    const questionNode = document.createTextNode(questionText);
+
+    question.appendChild(questionNode);
+    answer.appendChild(answerNode);
+
+    li.appendChild(question);
+    li.appendChild(answer);
+
+    title.appendChild(titleText);
+    testUl.appendChild(li);
+    answerIput.value = "";
+    questionIput.value = "";
+    document.querySelector(".question_error ").innerHTML = "";
+    document.querySelector(".answer_error ").innerHTML = "";
+  }
 });
 
 console.log(sessionStorage);
