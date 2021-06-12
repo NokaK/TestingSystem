@@ -58,6 +58,7 @@ body {
     .my_subject_li {
       margin-bottom: 10px;
       font-size: 1.2rem;
+      cursor: pointer;
     }
   }
   .profile_section_form {
@@ -72,7 +73,6 @@ body {
     .reset_btn {
       width: 80%;
     }
-
   }
 }
 .middle_section {
@@ -92,7 +92,6 @@ body {
 .students_section {
   h4 {
     cursor: pointer;
-
   }
 }
 
@@ -103,5 +102,12 @@ body {
   }
   .add_test {
     width: 200px;
+  }
+}
+.teachers_section_form {
+  display: flex;
+  flex-direction: column;
+  .add_teacher {
+    width: 250px;
   }
 }
