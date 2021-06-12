@@ -1,6 +1,6 @@
 $white-color: white;
 $blue-color: darkslateblue;
-$active-color: #221d42;
+$active-color: #221b57;
 $half-width: 50%;
 
 * {
@@ -41,4 +41,8 @@ input[type="submit" i] {
   height: 35px;
   border: none;
   outline: none;
+}
+
+.active {
+  background-color: $active-color;
 }

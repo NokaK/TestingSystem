@@ -1,3 +1,17 @@
+function checkRepeat() {
+  if (
+    document.getElementById("password").value !==
+    document.getElementById("repeat_password").value
+  ) {
+    document.querySelector(".warning_password").innerHTML =
+      "პაროლები არ ემთხვევა!";
+    document.querySelector(".reset_btn").disabled = true;
+  } else {
+    document.querySelector(".warning_password").innerHTML = null;
+    document.querySelector(".regist_btn").disabled = false;
+  }
+}
+
 function slideRegistration() {
   let registration = document.querySelector(".regist");
   registration.classList.toggle("hidden");
@@ -29,22 +43,25 @@ const loginForm = document.getElementById("login_form");
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
+
+  const rgx =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  const r = rgx.test(email.value);
+  console.log(r);
+  console.log(email.value);
+
   if (
+    loginPassword.value === "" ||
+    loginPassword.value === null ||
     email.value === "" ||
-    email.value === null ||
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-      email.value
-    )
+    email.value === null
   ) {
-    email.classList.add("error_syle");
+    document.querySelector(".warning_email").classList.add("error_style");
+    document.querySelector(".warning_email").innerHTML = "შეავსეთ ყველა ველი";
+  } else if (r === false) {
+    document.querySelector(".warning_email").classList.add("error_style");
     document.querySelector(".warning_email").innerHTML =
       "მეილის ფორმატი არასწორია";
-
-    // document.querySelector(".input_error").innerHTML =
-    //   " გთხოვთ შეიყვანოთ მეილის მისამართი";
-  } else if (loginPassword.value === "" || loginPassword.value === null) {
-    loginPassword.classList.add("error_syle");
-    loginPassword.placeholder = " შეავსეთ ყველა ველი";
   } else {
     location.href = "profile.html";
   }
@@ -53,50 +70,76 @@ loginForm.addEventListener("submit", (e) => {
 // registration validation
 
 const regForm = document.getElementById("regist_form");
-const regEmail = document.querySelector(".regist_email");
-const regName = document.getElementById("name");
+
+const regEmail = document.getElementById("regist_email");
+const regName = document.getElementById("reg_name");
+
+
 const regSurname = document.getElementById("surname");
 const regPassword = document.getElementById("password");
 
 regForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(regName.value);
-  if (
-    email.value === "" ||
-    email.value === null ||
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-      email.value
-    )
-  ) {
-    email.classList.add("error_syle");
-    document.querySelector(".warning_email").innerHTML =
-      "მეილის ფორმატი არასწორია";
-  }
-  if (regName.value === "" || regName.value === null) {
+
+
+  const rgx =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  const r = rgx.test(regEmail.value);
+  console.log(r);
+
+  if (r === false) {
+    const warnEmail = document.querySelector(".reg_warning_email");
+    warnEmail.classList.add("error_style");
+    warnEmail.innerHTML = "მეილის ფორმატი არასწორია";
+
+    // console.log(warnEmail);
+  }  else if (regName.value === "" || regName.value === null) {
     const warnName = document.querySelector(".warning_name");
-    warnName.classList.add("warning");
     warnName.innerHTML = "გთხოვთ შეიყვანოთ სახელი";
-  }
+    
+  } else if (regName.value > 0 && /\p{Letter}/u.test(regName.value) === false) {
+    document.querySelector(".warning_name").innerHTML =
+      "სახელი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
 
-  if (/^[a-zA-Z ]+$/.test(regName.value) === false) {
-    document.querySelector(".warning_name").innerHTML = "სახელი არასწორია";
-  } else {
-    document.querySelector(".warning_name").innerHTML = "";
-  }
 
-  if (regSurname.value === "" || regSurname.value === null) {
+  } else if (regSurname.value === "" || regSurname.value === null) {
     const warnSurname = document.querySelector(".warning_surname");
-    warnSurname.classList.add("warning");
-    warnSurname.innerHTML = "გთხოვთ შეიყვანოთ გვარი";
-  } else {
-    warnSurname.innerHTML = "";
-  }
 
-  if (/^[a-zA-Z]+$/.test(regSurname.value) === false) {
-    document.querySelector(".warning_surname").innerHTML = "გვარი არასწორია";
-  }
-  if (regPassword.value === "" || regPassword.value === null) {
+    warnSurname.innerHTML = "გთხოვთ შეიყვანოთ გვარი";
+
+
+  } else if (
+    regSurname.value.length > 0 &&
+    /\p{Letter}/u.test(regSurname.value) === false
+  ) {
+
+    document.querySelector(".warning_surname").innerHTML =
+      "გვარი, არ უნდა შეიცივადეს რიცხვებს და სიმბოლოებს";
+
+  } else  if (/\p{Letter}/u.test(regSurname.value) === false) {
+    document.querySelector(".warning_surname").innerHTML =
+      "გვარი, არ უნდა შეიცავდეს რიცხვებს და სიმბოლოებს";
+
+  }  else if (regPassword.value === "" || regPassword.value === null) {
     document.querySelector(".warning_password").innerHTML =
       "გთხოვთ შეიყვანოთ პაროლი";
+ 
+  } 
+  // else if ( !regPassword.value === "" && !regSurname.value === "" && regName.value === "" && r === true   ) {
+  //   warnEmail.innerHTML= "";
+  //   warnSurname.innerHTML = "";
+  //   warnName.innerHTML = "";
+  //   document.querySelector(".warning_password").innerHTML =
+  //     "";
+  // }
+  
+  else {
+    location.href = "profile.html";
+    sessionStorage.setItem('name',regName.value);
+    sessionStorage.setItem('surname',regSurname.value);
+    sessionStorage.setItem('email',regEmail.value);
+    
   }
+
 });
+
