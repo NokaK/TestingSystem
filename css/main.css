@@ -237,6 +237,7 @@ body .main_section_container .main_section_li,
 body .main_section_container .my_subject_li {
   margin-bottom: 10px;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 body .profile_section_form {
   width: 300px;
@@ -271,6 +272,22 @@ body .profile_section_form .reset_btn {
 
 .students_section h4 {
   cursor: pointer;
+}
+
+.tests_section_form {
+  display: flex;
+  flex-direction: column;
+}
+.tests_section .add_test {
+  width: 200px;
+}
+
+.teachers_section_form {
+  display: flex;
+  flex-direction: column;
+}
+.teachers_section_form .add_teacher {
+  width: 250px;
 }
 
 .log_reg {
