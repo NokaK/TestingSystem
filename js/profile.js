@@ -148,7 +148,8 @@ const NameError = document.querySelector(".name_error");
 const LastNameError = document.querySelector(".lastName_error");
 
 const AddStudentBtn = document.querySelector(".add_student");
-AddStudentBtn.addEventListener("click", () => {
+AddStudentBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   let validateName = false;
   let validateLastName = false;
 
@@ -201,7 +202,8 @@ const testUl = document.querySelector(".tests_ul");
 const questionIput = document.querySelector(".tests_question_input");
 const answerIput = document.querySelector(".tests_answer_input");
 
-addTest.addEventListener("click", () => {
+addTest.addEventListener("click", (e) => {
+  e.preventDefault();
   const answerText = answerIput.value;
   const questionText = questionIput.value;
   if (answerText.trim().length === 0) {
@@ -266,7 +268,8 @@ const teacherLastame = document.querySelector(".teachers_lastname_input");
 const teacherNameError = document.querySelector(".teacher_name_error");
 const teacherLastameError = document.querySelector(".teacher_lastname_error");
 
-addTeacher.addEventListener("click", () => {
+addTeacher.addEventListener("click", (e) => {
+  e.preventDefault();
   let validateName = false;
   let validateLastName = false;
   if (teacherName.value.trim().length == 0) {
