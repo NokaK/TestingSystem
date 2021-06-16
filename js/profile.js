@@ -1,11 +1,19 @@
-const subjectLi = document.getElementsByClassName("my_subject_li");
-for (var i = 0; i < subjectLi.length; i++) {
-  subjectLi[i].addEventListener("click", () => {
-    const profileForm = document.querySelector(".profile_form_container");
-    profileForm.classList.add("hidden");
-    document.querySelector(".middle_section").classList.remove("hidden");
-  });
-}
+const subject1 = document.querySelector(".subject1");
+const subject2 = document.querySelector(".subject2");
+const subject3 = document.querySelector(".subject3");
+
+subject1.addEventListener("click", () => {
+  const profileForm = document.querySelector(".profile_form_container");
+  profileForm.classList.add("hidden");
+  document.querySelector(".middle_section").classList.remove("hidden");
+  document.querySelector(".middle_section2").classList.add("hidden");
+});
+subject2.addEventListener("click", () => {
+  const profileForm = document.querySelector(".profile_form_container");
+  profileForm.classList.add("hidden");
+  document.querySelector(".middle_section2").classList.remove("hidden");
+  document.querySelector(".middle_section").classList.add("hidden");
+});
 
 const students = document.querySelector(".students");
 const tests = document.querySelector(".tests");
@@ -80,7 +88,6 @@ resetForm.addEventListener("submit", (e) => {
     document.querySelector(".warning_password").innerHTML = null;
   }
   if (name.value.length === 0) {
-
     warnName.innerHTML = "გთხოვთ შეიყვანოთ სახელი";
   }
   if (name.value.length > 0 && /\p{Letter}/u.test(name.value) === false) {
@@ -141,7 +148,8 @@ const NameError = document.querySelector(".name_error");
 const LastNameError = document.querySelector(".lastName_error");
 
 const AddStudentBtn = document.querySelector(".add_student");
-AddStudentBtn.addEventListener("click", () => {
+AddStudentBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   let validateName = false;
   let validateLastName = false;
 
@@ -183,7 +191,7 @@ AddStudentBtn.addEventListener("click", () => {
       document.createTextNode(StudentName.value + " " + StudentLastName.value)
     );
     ActiveUl.appendChild(li);
-     StudentName.value = "";
+    StudentName.value = "";
     StudentLastName.value = "";
   }
 });
@@ -194,7 +202,8 @@ const testUl = document.querySelector(".tests_ul");
 const questionIput = document.querySelector(".tests_question_input");
 const answerIput = document.querySelector(".tests_answer_input");
 
-addTest.addEventListener("click", () => {
+addTest.addEventListener("click", (e) => {
+  e.preventDefault();
   const answerText = answerIput.value;
   const questionText = questionIput.value;
   if (answerText.trim().length === 0) {
@@ -243,9 +252,63 @@ addTest.addEventListener("click", () => {
 
 console.log(sessionStorage);
 
-let profileName = sessionStorage.getItem('name');
-let profileSurname = sessionStorage.getItem('surname');
-let profileEmail = sessionStorage.getItem('email');
+let profileName = sessionStorage.getItem("name");
+let profileSurname = sessionStorage.getItem("surname");
+let profileEmail = sessionStorage.getItem("email");
 
-document.getElementById("profileName").innerHTML = profileName + " " + profileSurname;
+document.getElementById("profileName").innerHTML =
+  profileName + " " + profileSurname;
 document.getElementById("profileEmail").value = profileEmail;
+
+// add teachers
+
+const addTeacher = document.querySelector(".add_teacher");
+const teacherName = document.querySelector(".teachers_name_input");
+const teacherLastame = document.querySelector(".teachers_lastname_input");
+const teacherNameError = document.querySelector(".teacher_name_error");
+const teacherLastameError = document.querySelector(".teacher_lastname_error");
+
+addTeacher.addEventListener("click", (e) => {
+  e.preventDefault();
+  let validateName = false;
+  let validateLastName = false;
+  if (teacherName.value.trim().length == 0) {
+    console.log("test");
+    teacherNameError.innerHTML = "გთხოვთ შეიყვანოთ სახელი";
+  } else if (
+    teacherName.value.trim().length !== 0 &&
+    (!/\p{L}/u.test(teacherName.value) || /\d/.test(teacherName.value))
+  ) {
+    teacherNameError.innerHTML =
+      "სახელი არ უნდა შეიცავდეს რიცხვებს და სიმბოლოებს";
+  } else {
+    teacherNameError.innerHTML = "";
+    validateName = true;
+  }
+
+  if (teacherLastame.value.trim().length == 0) {
+    console.log("gvaeri arali");
+    teacherLastameError.innerHTML = "გთხოვთ შეიყვანოთ გვარი";
+  } else if (
+    teacherLastame.value.trim().length !== 0 &&
+    (!/\p{L}/u.test(teacherLastame.value) || /\d/.test(teacherLastame.value))
+  ) {
+    teacherLastameError.innerHTML =
+      "გვარი არ უნდა შეიცავდეს რიცხვებს და სიმბოლოებს";
+  } else {
+    teacherLastameError.innerHTML = "";
+    validateLastName = true;
+  }
+  if (validateLastName && validateName) {
+    const li = document.createElement("li");
+    const teachersUl = document.querySelector(".teachers_ul");
+
+    li.appendChild(
+      document.createTextNode(`${teacherName.value} ${teacherLastame.value}`)
+    );
+    console.log(li);
+    teachersUl.appendChild(li);
+    teacherName.value = "";
+    teacherLastame.value = "";
+  }
+});

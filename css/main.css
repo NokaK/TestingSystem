@@ -237,6 +237,7 @@ body .main_section_container .main_section_li,
 body .main_section_container .my_subject_li {
   margin-bottom: 10px;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 body .profile_section_form {
   width: 300px;
@@ -279,6 +280,14 @@ body .profile_section_form .reset_btn {
 }
 .tests_section .add_test {
   width: 200px;
+}
+
+.teachers_section_form {
+  display: flex;
+  flex-direction: column;
+}
+.teachers_section_form .add_teacher {
+  width: 250px;
 }
 
 .log_reg {
@@ -413,4 +422,6 @@ body .profile_section_form .reset_btn {
 
 .error_style {
   color: red;
+}
 
+/*# sourceMappingURL=main.css.map */
