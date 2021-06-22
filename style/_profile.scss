@@ -47,8 +47,7 @@ body {
     margin-top: 50px;
     .main_section {
       width: 15%;
-      margin-right: calc(50vw - 15% - 160px);
-
+      margin-right: 300px;
       ul {
         padding-left: 10px;
         margin-top: 10px;
@@ -59,6 +58,9 @@ body {
       margin-bottom: 10px;
       font-size: 1.2rem;
       cursor: pointer;
+      &:hover {
+        color: rgb(13, 89, 253);
+      }
     }
   }
   .profile_section_form {
@@ -92,6 +94,10 @@ body {
 .students_section {
   h4 {
     cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .students_ul {
   }
 }
 
@@ -100,14 +106,29 @@ body {
     display: flex;
     flex-direction: column;
   }
+  .tests_li {
+    margin-bottom: 10px;
+  }
+  .tests_ul {
+    margin-top: 10px;
+  }
   .add_test {
     width: 200px;
   }
 }
-.teachers_section_form {
-  display: flex;
-  flex-direction: column;
-  .add_teacher {
-    width: 250px;
+
+.teachers_section {
+  .teachers_section_form {
+    display: flex;
+    flex-direction: column;
+    .add_teacher {
+      width: 250px;
+    }
+  }
+  .teachers_ul {
+    margin-top: 10px;
+  }
+  .teachers_li {
+    margin-bottom: 5px;
   }
 }

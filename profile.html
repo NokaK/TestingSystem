@@ -21,15 +21,15 @@
       <div class="main_section">
         <h4>მთავარი</h4>
         <ul class="main_section_ul">
-          <li class="main_section_li"><a href="#">საგანი 1</a></li>
-          <li class="main_section_li"><a href="#">საგანი 2</a></li>
-          <li class="main_section_li"><a href="#">საგანი 3</a></li>
+          <li class="main_section_li">საგანი 1</li>
+          <li class="main_section_li">საგანი 2</li>
+          <li class="main_section_li">საგანი 3</li>
         </ul>
         <h4>ჩემი საგნები</h4>
         <ul class="my_subject_ul">
           <li class="my_subject_li subject1">საგანი 1</li>
           <li class="my_subject_li subject2">საგანი 2</li>
-          <li class="my_subject_li">საგანი 3</li>
+          <li class="my_subject_li subject3">საგანი 3</li>
         </ul>
         <p><a class="question_bank" href="#"> კითხვების ბანკი</a></p>
       </div>
@@ -83,9 +83,9 @@
           </button>
         </form>
       </div>
-      <div class="middle_section hidden">
+      <div class="middle_section  middle_section0 middle_section_active hidden">
         <div class="middle_section_header">
-          <button class="tests active basic_button">ტესტები</button>
+          <button class="tests active basic_button">ტესტები1</button>
           <button class="students basic_button">მოსწავლეები</button>
           <button class="teachers basic_button">მასწავლებლები</button>
           <a href="#">კურსის დატოვება</a>
@@ -203,9 +203,129 @@
           </div>
         </div>
       </div>
-      <div class="middle_section2 hidden">
+      <div class="middle_section middle_section1 hidden">
         <div class="middle_section_header">
-          <button class="tests active basic_button">ტესტები</button>
+          <button class="tests active basic_button">ტესტები2</button>
+          <button class="students basic_button">მოსწავლეები</button>
+          <button class="teachers basic_button">მასწავლებლები</button>
+          <a href="#">კურსის დატოვება</a>
+        </div>
+
+        <div class="middle_section_container">
+          <div class="tests_section content">
+            <ul class="tests_ul">
+              <li class="tests_li">
+                <h4 class="test_title">ტესტი 1</h4>
+                <p class="question">კითხვა</p>
+                <p class="answer">პასუხი</p>
+              </li>
+              <li class="tests_li">
+                <h4 class="test_title">ტესტი 2</h4>
+                <p class="question">კითხვა</p>
+                <p class="answer">პასუხი</p>
+              </li>
+              <li class="tests_li">
+                <h4 class="test_title">ტესტი 3</h4>
+                <p class="question">კითხვა</p>
+                <p class="answer">პასუხი</p>
+              </li>
+            </ul>
+            <form class="tests_section_form">
+              <input
+                class="tests_question_input basic_input"
+                type="text"
+                placeholder="კითხვა"
+              />
+              <span class="question_error error_style"> </span>
+              <input
+                class="tests_answer_input basic_input"
+                type="text"
+                placeholder="პასუხი"
+              />
+              <span class="answer_error error_style"> </span>
+              <button class="basic_button add_test">ტესტის დამატება</button>
+            </form>
+          </div>
+          <div class="students_section hidden content">
+            <div class="class1 active_class">
+              <h4 class="class1__title title1">კლასი 1</h4>
+              <ul class="students_ul">
+                <li class="students_li">ლევან მამაცაშვილი</li>
+                <li class="students_li">გიორგი მაისურაძე</li>
+                <li class="students_li">ნათია შონია</li>
+              </ul>
+            </div>
+            <span class="class1_form">
+              <form class="students__form">
+                <input
+                  class="students_name_input basic_input"
+                  placeholder="სახელი"
+                />
+                <span class="name_error error_style"> </span>
+                <input
+                  class="students_lastname_input basic_input"
+                  placeholder="გვარი"
+                />
+                <span class="lastName_error error_style"> </span>
+                <button class="basic_button add_student">
+                  მოსწავლის დამატება
+                </button>
+              </form>
+            </span>
+            <div class="class2">
+              <h4 class="class2__title title2">კლასი 2</h4>
+               <ul class="students_ul">
+                <li class="students_li">მოსწავლე 1</li>
+                <li class="students_li">მოსწავლე 2</li>
+                <li class="students_li">მოსწავლე 3</li>
+              </ul>
+            </div>
+            <span class="class2__form"></span>
+            <div class="class3">
+              <h4 class="class3__title title3">კლასი 3</h4>
+              <ul class="students_ul">
+                <li class="students_li">მოსწავლე 1</li>
+                <li class="students_li">მოსწავლე 2</li>
+                <li class="students_li">მოსწავლე 3</li>
+              </ul>
+            </div>
+        
+            <span class="class3_form"></span>
+          </div>
+          <span class="class3_form"></span>
+          <div class="teachers_section hidden content">
+           <ul class="teachers_ul">
+             <li class="teachers_li">
+                მასწავლებელი მასწავლებელი
+             </li >
+             <li class="teachers_li">
+                მასწავლებელი მასწავლებელი
+             </li>
+             <li class="teachers_li">
+                მასწავლებელი მასწავლებელი
+             </li>
+           </ul>
+            <form class="teachers_section_form">
+              <input
+                class="teachers_name_input basic_input"
+                placeholder="სახელი"
+              />
+              <span class="teacher_name_error error_style"></span>
+              <input
+                class="teachers_lastname_input basic_input"
+                placeholder="გვარი"
+              />
+               <span class="teacher_lastname_error error_style"></span>
+              <button class="basic_button add_teacher">
+                მასწავლებლის დამატება
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="middle_section middle_section2 hidden">
+        <div class="middle_section_header">
+          <button class="tests active basic_button">ტესტები3</button>
           <button class="students basic_button">მოსწავლეები</button>
           <button class="teachers basic_button">მასწავლებლები</button>
           <a href="#">კურსის დატოვება</a>
