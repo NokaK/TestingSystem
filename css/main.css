@@ -227,7 +227,7 @@ body .main_section_container {
 }
 body .main_section_container .main_section {
   width: 15%;
-  margin-right: calc(50vw - 15% - 160px);
+  margin-right: 300px;
 }
 body .main_section_container .main_section ul {
   padding-left: 10px;
@@ -238,6 +238,10 @@ body .main_section_container .my_subject_li {
   margin-bottom: 10px;
   font-size: 1.2rem;
   cursor: pointer;
+}
+body .main_section_container .main_section_li:hover,
+body .main_section_container .my_subject_li:hover {
+  color: #0d59fd;
 }
 body .profile_section_form {
   width: 300px;
@@ -272,22 +276,35 @@ body .profile_section_form .reset_btn {
 
 .students_section h4 {
   cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-
 .tests_section_form {
   display: flex;
   flex-direction: column;
+}
+.tests_section .tests_li {
+  margin-bottom: 10px;
+}
+.tests_section .tests_ul {
+  margin-top: 10px;
 }
 .tests_section .add_test {
   width: 200px;
 }
 
-.teachers_section_form {
+.teachers_section .teachers_section_form {
   display: flex;
   flex-direction: column;
 }
-.teachers_section_form .add_teacher {
+.teachers_section .teachers_section_form .add_teacher {
   width: 250px;
+}
+.teachers_section .teachers_ul {
+  margin-top: 10px;
+}
+.teachers_section .teachers_li {
+  margin-bottom: 5px;
 }
 
 .log_reg {
